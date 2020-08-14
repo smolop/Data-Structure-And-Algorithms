@@ -1,0 +1,98 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-BubbleSort<DataStructureAndAlgorithms_bb006075>",
+            "request": "launch",
+            "mainClass": "BubbleSort",
+            "projectName": "DataStructureAndAlgorithms_bb006075"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-DoubleLinkedList<DataStructureAndAlgorithms_bb006075>",
+            "request": "launch",
+            "mainClass": "DoubleLinkedList",
+            "projectName": "DataStructureAndAlgorithms_bb006075"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-HeapSort<DataStructureAndAlgorithms_bb006075>",
+            "request": "launch",
+            "mainClass": "HeapSort",
+            "projectName": "DataStructureAndAlgorithms_bb006075"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-InsertionSort<DataStructureAndAlgorithms_bb006075>",
+            "request": "launch",
+            "mainClass": "InsertionSort",
+            "projectName": "DataStructureAndAlgorithms_bb006075"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-LinkedList<DataStructureAndAlgorithms_bb006075>",
+            "request": "launch",
+            "mainClass": "LinkedList",
+            "projectName": "DataStructureAndAlgorithms_bb006075"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-MergeSort<DataStructureAndAlgorithms_bb006075>",
+            "request": "launch",
+            "mainClass": "MergeSort",
+            "projectName": "DataStructureAndAlgorithms_bb006075"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Queue<DataStructureAndAlgorithms_bb006075>",
+            "request": "launch",
+            "mainClass": "Queue",
+            "projectName": "DataStructureAndAlgorithms_bb006075"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-QuickSort<DataStructureAndAlgorithms_bb006075>",
+            "request": "launch",
+            "mainClass": "QuickSort",
+            "projectName": "DataStructureAndAlgorithms_bb006075"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-RecursiveBubbleSort<DataStructureAndAlgorithms_bb006075>",
+            "request": "launch",
+            "mainClass": "RecursiveBubbleSort",
+            "projectName": "DataStructureAndAlgorithms_bb006075"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-RecursiveInsertionSort<DataStructureAndAlgorithms_bb006075>",
+            "request": "launch",
+            "mainClass": "RecursiveInsertionSort",
+            "projectName": "DataStructureAndAlgorithms_bb006075"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-SelectionSort<DataStructureAndAlgorithms_bb006075>",
+            "request": "launch",
+            "mainClass": "SelectionSort",
+            "projectName": "DataStructureAndAlgorithms_bb006075"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Stack<DataStructureAndAlgorithms_bb006075>",
+            "request": "launch",
+            "mainClass": "Stack",
+            "projectName": "DataStructureAndAlgorithms_bb006075"
+        }
+    ]
+}
