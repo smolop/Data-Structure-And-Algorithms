@@ -13,27 +13,27 @@ public class MergeSort {
 	}
 
 	private static void merge(int[] array, int left, int middle, int right) {
-		int l_size = middle - left + 1;
-		int r_size = right - middle;
+		int lSize = middle - left + 1;
+		int rSize = right - middle;
 		
-		int L[] = new int[l_size];
-		int R[] = new int[r_size];
+		int L[] = new int[lSize];
+		int R[] = new int[rSize];
 		
-		for (int i = 0; i < l_size; i++)
+		for (int i = 0; i < lSize; i++)
 			L[i] = array[left + i];
-		for (int j = 0; j < r_size; j++)
+		for (int j = 0; j < rSize; j++)
 			R[j] = array[middle + 1 + j];
 		
 		int	i = 0, j = 0;
 		int k = left;
 		
-		while (i < l_size && j < r_size) 
+		while (i < lSize && j < rSize) 
 			array[k++] = L[i] < R[j] ? L[i++] : R[j++];
 
-		while(i < l_size)
+		while(i < lSize)
 			array[k++] = L[i++];
 		
-		while(j < r_size)
+		while(j < rSize)
 			array[k++] = R[j++];
 	}
 	
