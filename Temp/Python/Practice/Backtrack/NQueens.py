@@ -6,7 +6,7 @@ class NQueens(object):
         self.__N: int = len(matrix)
 
     def solve(self):
-        print(f"{self.__N}Queens")
+        print(f"{self.__N}Queens:")
         self.__n_queens_solver(0)
 
     def __n_queens_solver(self, col: int) -> bool:
