@@ -1,4 +1,4 @@
-package src;
+ºpackage src;
 
 
 public class Runner {
@@ -46,10 +46,31 @@ public class Runner {
 		Runner runner = new Runner();
 		int[] arr = {20, 10, 40, 50, 60, 30, 70, 80};
 		System.out.println("Running...");
-		//runner.execInsertionSort(arr);
-		//runner.execMergeSort(arr);
-		//runner.execQuickSort(arr);
-		runner.execNQueens();
+		
+		int option = 4;
+		
+		switch (option) {
+		
+			case 1: 
+				runner.execInsertionSort(arr);
+				break;
+				
+			case 2: 
+				runner.execMergeSort(arr);
+				break;
+			
+			case 3: 
+				runner.execQuickSort(arr);
+				break;
+			
+			case 4: 
+				runner.execNQueens();
+				break;
+		
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + option);
+		}
+			
 		System.out.println("\nFinished...");
 	}
 

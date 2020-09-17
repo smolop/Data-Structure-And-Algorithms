@@ -2,8 +2,8 @@ import numpy as np
 
 
 class NQueens(object):
-    def __init__(self, *args, matrix):
-        super(NQueens, self).__init__(*args)
+    def __init__(self, matrix):
+        super(NQueens, self).__init__()
         self.matrix = matrix
         self.N = len(matrix)
 
@@ -26,10 +26,10 @@ class NQueens(object):
         for c in range(self.N):
             if self.__is_there_a_queen(c, row):
                 return False
-        for r, c in zip(range(self.N - 1, -1, -1), range(self.N - 1, -1, -1)):
+        for r, c in zip(range(row, -1, -1), range(col - 1, -1, -1)):
             if self.__is_there_a_queen(c, r):
                 return False
-        for c, r in zip(range(row, self.N), range(self.N - 1, -1, -1)):
+        for c, r in zip(range(row, self.N), range(col, -1, -1)):
             if self.__is_there_a_queen(c, r):
                 return False
         return True

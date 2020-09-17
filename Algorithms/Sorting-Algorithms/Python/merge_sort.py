@@ -23,8 +23,6 @@ def merge(L, R, merged_arr):
         k += 1
     merge_remaining(merged_arr, L, R, i, j, k,)
 
-    merged_arr
-
 
 def merge_remaining(merged_arr, L, R, i, j, k,):
     for i in range(i, len(L)):
