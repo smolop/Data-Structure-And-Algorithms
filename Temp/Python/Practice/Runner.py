@@ -53,7 +53,7 @@ def main(option=0):
 
     if 0 < option < 4:
         print(arr)
-    else:
+    elif option == 4:
         print(mtx)
 
 
