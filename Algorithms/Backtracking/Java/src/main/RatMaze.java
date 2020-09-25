@@ -72,6 +72,7 @@ public class RatMaze {
         return BOARD[row][col] == FOOTPRINT2;
     }
 
+
     private boolean isAValidPosition(int row, int col) {
         boolean verifyRow = row >= 0 && row < DIM;
         boolean verifyCol = col >= 0 && col < DIM;
