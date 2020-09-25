@@ -1,3 +1,5 @@
+
+
 public class NQueens {
 
 	private int matrix[][] = null;
