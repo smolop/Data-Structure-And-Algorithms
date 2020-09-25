@@ -1,3 +1,5 @@
+package src.main;
+
 public class NQueens {
 
 	private int matrix[][] = null;

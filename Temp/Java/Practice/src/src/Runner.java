@@ -1,4 +1,4 @@
-ºpackage src;
+package src;
 
 
 public class Runner {
