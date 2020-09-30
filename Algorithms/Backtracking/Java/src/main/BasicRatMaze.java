@@ -68,7 +68,7 @@ public class BasicRatMaze {
     }
 
     public static int[][] getBoard() {
-        int[][] boardEmpty =
+        int[][] emptyBoard =
                 {{0, 0, 0, 0},
                 {0, 0, 0, 0},
                 {0, 0, 0, 0},
