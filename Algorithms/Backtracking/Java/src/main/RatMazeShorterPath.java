@@ -4,19 +4,13 @@ public class RatMazeShorterPath {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GRAY = "\u001B[90m";
-    public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_BRIGHT_YELLOW = "\u001B[93m";
     public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
     private final int[][] BOARD;
     private final int DIM;
     private final int EMPTY_SPACE = 0;
     private final int OBSTACLE = 1;
-    private final int FOOTPRINT1 = 2;
-    private final int FOOTPRINT2 = 3;
-    private final int SHORTER_FOOTPRINT = 4;
-    private final int LOCATION = 5;
+    private final int LOCATION = 8;
     private final int EXIT = -1;
     private int shorterPathCounter = 0;
     private java.util.Stack<Integer> shorterPathIndexStack;
@@ -33,7 +27,6 @@ public class RatMazeShorterPath {
         System.out.println("Rat Maze:");
         if (findPath(0, 0, 0)) { // pass stepCounter argument TODO
             System.out.println("Solution: The rat found the exit.");
-//            traceShorterPath();
         } else {
             BOARD[0][0] = LOCATION;
             System.out.println(ANSI_RED + "There's a valid path." + ANSI_RESET);
@@ -42,23 +35,9 @@ public class RatMazeShorterPath {
     }
 
 
-    private void traceShorterPath() {
-        while (!shorterPathIndexStack.isEmpty()){
-            int c = shorterPathIndexStack.pop();
-            int r = shorterPathIndexStack.pop();
-            BOARD[r][c] = SHORTER_FOOTPRINT;
-            if (shorterPathIndexStack.size() == 0)
-                BOARD[r][c] = LOCATION;
-        }
-    }
-
-
     boolean findPath(int row, int col, int stepCounter) {
         if (isAValidPosition(row, col)) {
-//            printBoard();
             stepCounter++;
-//            if (shorterPathCounter > 0 && stepCounter == shorterPathCounter)
-//                return false;
             if (BOARD[row][col] == EXIT) {
                 if (stepCounter <= shorterPathCounter || shorterPathCounter == 0){
                     shorterPathIndexStack = new java.util.Stack<Integer>();
@@ -67,12 +46,8 @@ public class RatMazeShorterPath {
                     shorterPathCounter = stepCounter;
                     return true;
                 }
-                //BOARD[row][col] = EXIT;
-                //stepCounter = 0;
                 return false;
             }
-            //BOARD[ row][col] = counterSteps == 1 ? 11 : counterSteps == 8 ? 88 : counterSteps; // erase. TODO
-            //BOARD[row][col] = LOCATION;
             return (auxFindPath(row, col, stepCounter));
         }
         return false;
@@ -80,7 +55,6 @@ public class RatMazeShorterPath {
 
 
     private boolean auxFindPath(int row, int col, int stepCounter) {
-//        BOARD[row][col] = FOOTPRINT1;
         if (shorterPathCounter > 0)
             if (stepCounter >= shorterPathCounter - 1 || BOARD[row][col] == stepCounter)
                 return false;
@@ -98,7 +72,6 @@ public class RatMazeShorterPath {
 
         while (!movesStack.isEmpty())// Get all valid paths. TODO
             if (movesStack.pop()) {
-//                BOARD[row][col] = FOOTPRINT2;
                 if(BOARD[row][col] > stepCounter || BOARD[row][col] == EMPTY_SPACE)
                     BOARD[row][col] = stepCounter;
                 if (shorterPathIndexStack.size() / 2 == shorterPathCounter - stepCounter) {
@@ -106,10 +79,6 @@ public class RatMazeShorterPath {
                     shorterPathIndexStack.push(col);
                 }
             }
-//        if (BOARD[row][col] == stepCounter && stepCounter == 1){
-//            BOARD[row][col] = 2;
-//            return true;
-//        }
         return BOARD[row][col] == stepCounter;
     }
 
@@ -191,14 +160,10 @@ public class RatMazeShorterPath {
             sb.append(ANSI_GRAY);
         else if (BOARD[r][c] == OBSTACLE && ( r != 0 || c != 0))
                 sb.append(ANSI_BLUE);
-        else if (BOARD[r][c] > OBSTACLE)
+        else if (BOARD[r][c] > OBSTACLE  && ( r != 0 || c != 0))
             sb.append(ANSI_YELLOW);
-//        else if (BOARD[r][c] == FOOTPRINT2)
-//            sb.append(ANSI_YELLOW);
-//        else if (BOARD[r][c] == SHORTER_FOOTPRINT)
-//            sb.append(ANSI_PURPLE);
-//        else if (BOARD[r][c] == LOCATION)
-//            sb.append(ANSI_GREEN);
+        else if (BOARD[r][c] == LOCATION)
+            sb.append(ANSI_YELLOW);
     }
 
 
@@ -254,9 +219,9 @@ public class RatMazeShorterPath {
                         {0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1},
                         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
                         {0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1},
-                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
+                        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0}
                 };
-        
+
         return board12x12;
     }
 
