@@ -17,11 +17,13 @@ public class RatMaze {
     private int shorterPathCounter = 0;
     private int counterSteps = 0;
 
+
     public RatMaze(int[][] board) {
         BOARD = board;
         DIM = board.length;
         board[DIM - 1][DIM - 1] = EXIT;
     }
+
 
     void solve() {
         System.out.println("Rat Maze:");
@@ -31,6 +33,7 @@ public class RatMaze {
             System.out.println(ANSI_RED + "There's a valid path." + ANSI_RESET);
         printBoard();
     }
+
 
     boolean findPath(int row, int col) {// Clean code. TODO
         if (isAValidPosition(row, col)) {
@@ -47,6 +50,7 @@ public class RatMaze {
         }
         return false;
     }
+
 
     private boolean auxFindPath(int row, int col) {
         BOARD[row][col] = FOOTPRINT1;
@@ -71,6 +75,7 @@ public class RatMaze {
     }
 
 
+
     private boolean isAValidPosition(int row, int col) {
         boolean verifyRow = row >= 0 && row < DIM;
         boolean verifyCol = col >= 0 && col < DIM;
@@ -78,51 +83,61 @@ public class RatMaze {
         return  verifyBlock && BOARD[row][col] <= EMPTY_SPACE;
     }
 
+
     boolean moveUp(int row, int col) {
         boolean verifyUp = row > 0 && BOARD[row - 1][col] <= EMPTY_SPACE;
         return verifyUp && findPath(row - 1, col);
     }
+
 
     boolean moveDown(int row, int col){
         boolean verifyDown = row < DIM - 1 && BOARD[row + 1][col] <= EMPTY_SPACE;
         return verifyDown && findPath(row + 1, col);
     }
 
+
     boolean moveLeft(int row, int col){
         boolean verifyLeft = col > 0 && BOARD[row][col - 1] <= EMPTY_SPACE;
         return verifyLeft && findPath(row, col - 1);
     }
+
 
     boolean moveRight(int row, int col){
         boolean verifyRight = col < DIM - 1 && BOARD[row][col + 1] <= EMPTY_SPACE;
         return verifyRight && findPath(row, col + 1);
     }
 
+
     boolean moveDiagonalDownRight(int row, int col){
         boolean verifyDiagonalDownRight = row < DIM - 1 && col < DIM - 1 && BOARD[row + 1][col + 1] <= EMPTY_SPACE;
         return verifyDiagonalDownRight && findPath(row + 1, col + 1);
     }
+
 
     boolean moveDiagonalUpperRight(int row, int col){
         boolean verifyDiagonalUpperRight = row > 0 && col < DIM - 1 && BOARD[row - 1][col + 1] <= EMPTY_SPACE;
         return verifyDiagonalUpperRight && findPath(row - 1, col + 1);
     }
 
+
     boolean moveDiagonalDownLeft(int row, int col){
         boolean verifyDiagonalDownLeft = row < DIM - 1 && col > 0 && BOARD[row + 1][col - 1] <= EMPTY_SPACE;
         return verifyDiagonalDownLeft && findPath(row + 1, col - 1);
     }
+
 
     boolean moveDiagonalUpperLeft(int row, int col){
         boolean verifyDiagonalUpperLeft = row > 0 && col > 0 && BOARD[row - 1][col - 1] <= EMPTY_SPACE;
         return verifyDiagonalUpperLeft && findPath(row - 1, col - 1);
     }
 
+
     public void printBoard() {
         for (int r = 0; r < DIM; r++)
             for (int c = 0; c < DIM; c++)
                 System.out.printf(" %s ", getBlockString(r, c));
     }
+
 
     private String getBlockString(int r, int c) {
         StringBuilder sb = new StringBuilder();
@@ -131,6 +146,7 @@ public class RatMaze {
         if (c == DIM - 1) sb.append(r == DIM - 1 ? "\n\n" : "\n");
         return sb.toString();
     }
+
 
     private void setColorString(int r, int c, StringBuilder sb) {
         if (BOARD[r][c] == EMPTY_SPACE)
@@ -144,6 +160,7 @@ public class RatMaze {
         else if (BOARD[r][c] == LOCATION)
             sb.append(ANSI_GREEN);
     }
+
 
     public static int[][] getBoard() {
         int[][] emptyBoard8x8 =
@@ -230,6 +247,7 @@ public class RatMaze {
         return board32x32;
 
     }
+    
 
     public static void main(String[] args) {
         int[][] board = getBoard();

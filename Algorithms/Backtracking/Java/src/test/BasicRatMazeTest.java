@@ -54,6 +54,7 @@ public class BasicRatMazeTest {
         org.junit.jupiter.api.Assertions.assertTrue(basicRatMaze.moveRight(3, 2));
     }
 
+
     @org.junit.jupiter.api.Test
     void moveDownTest(){
         org.junit.jupiter.api.Assertions.assertTrue(basicRatMaze.moveDown(2, 3));
