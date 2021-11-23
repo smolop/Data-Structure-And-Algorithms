@@ -86,4 +86,4 @@ public class BasicRatMaze {
         int[][] board = getBoard();
         new BasicRatMaze(board).solve();
     }
-}
+} 
