@@ -1,4 +1,3 @@
-package src.main;
 
 public class BasicRatMaze {
     public static final String ANSI_RESET = "\u001B[0m";
@@ -87,4 +86,4 @@ public class BasicRatMaze {
         int[][] board = getBoard();
         new BasicRatMaze(board).solve();
     }
-}
+} 

@@ -1,3 +1,4 @@
+
 public class RatMaze {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
@@ -71,24 +72,6 @@ public class RatMaze {
         return BOARD[row][col] == FOOTPRINT2;
     }
 
-    private boolean FindShorterPath(int row, int col) {
-        java.util.Stack<Boolean> movesStack = new java.util.Stack<>();
-        movesStack.push(moveDown(row, col));
-        movesStack.push(moveRight(row, col));
-        movesStack.push(moveUp(row, col));
-        movesStack.push(moveLeft(row, col));
-        movesStack.push(moveDiagonalDownRight(row, col));
-        movesStack.push(moveDiagonalUpperRight(row, col));
-        movesStack.push(moveDiagonalDownLeft(row, col));
-        movesStack.push(moveDiagonalUpperLeft(row, col));
-
-        if (BOARD[row][col] >= FOOTPRINT1)
-            BOARD[row][col] = FOOTPRINT1;
-        while (!movesStack.isEmpty())// Get all valid paths. TODO
-            if (movesStack.pop())
-                BOARD[row][col] = FOOTPRINT2;
-        return BOARD[row][col] == FOOTPRINT2;
-    }
 
     private boolean isAValidPosition(int row, int col) {
         boolean verifyRow = row >= 0 && row < DIM;
