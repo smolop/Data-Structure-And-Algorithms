@@ -1,8 +1,10 @@
+package src.main;
+
 
 public class BasicRatMaze {
     public static final String ANSI_RESET = "\u001B[0m";
     public static final String ANSI_RED = "\u001B[31m";
-    private final int[][] BOARD;
+    private static int[][] BOARD;
     private final int DIM;
     private final int EMPTY_SPACE = 0;
     private final int LOCATION = 2;
@@ -11,7 +13,6 @@ public class BasicRatMaze {
     public BasicRatMaze(int[][] board) {
         BOARD = board;
         DIM = board.length;
-        board[DIM - 1][DIM - 1] = EXIT;
     }
 
     void solve() {
@@ -24,35 +25,41 @@ public class BasicRatMaze {
     }
 
     boolean findPath(int row, int col) {
-        boolean verifyDown, verifyRight, verifyDiagonal;
         boolean verifyRow = row >= 0 && row < DIM;
         boolean verifyCol = col >= 0 && col < DIM;
         boolean isValid = verifyRow && verifyCol && BOARD[row][col] <= EMPTY_SPACE;
 
-        printBoard();
         if (isValid){
-            verifyDown = row < DIM - 1 && BOARD[row + 1][col] <= EMPTY_SPACE;
-            verifyRight = col < DIM - 1 && BOARD[row][col + 1] <= EMPTY_SPACE;
-            verifyDiagonal = row < DIM - 1 && col < DIM - 1 && BOARD[row + 1][col + 1] <= EMPTY_SPACE;
-            if (BOARD[row][col] == EXIT) {
-                BOARD[row][col] = LOCATION;
+            if (BOARD[row][col] == EXIT)
                 return true;
-            }
             markBlock(row, col);
-            if (verifyDiagonal)
-                if (findPath(row + 1, col + 1))
-                    return true;
-            if (verifyDown)
-                if (findPath(row + 1, col))
-                    return true;
-            if (verifyRight)
-                if (findPath(row, col + 1))
-                    return true;
+            if (!moveDiagonal(row, col))
+                if(!moveDown(row, col))
+                    if(!moveRight(row, col))
+                        return false;
         }
-        return false;
+        return true;
     }
 
-    void markBlock(int row, int col) {
+    public boolean moveRight(int row, int col) {
+        boolean verifyRight = col < DIM - 1 && BOARD[row][col + 1] <= EMPTY_SPACE;
+        return  verifyRight && findPath(row, col + 1);
+    }
+
+
+    public boolean moveDiagonal(int row, int col) {
+        boolean verifyDiagonal = row < DIM - 1 && col < DIM - 1 && BOARD[row + 1][col + 1] <= EMPTY_SPACE;
+        return verifyDiagonal && findPath(row + 1, col + 1);
+    }
+
+
+    public boolean moveDown(int row, int col) {
+        boolean verifyDown = row < DIM - 1 && BOARD[row + 1][col] <= EMPTY_SPACE;
+        return verifyDown && findPath(row + 1, col);
+    }
+
+
+    public void markBlock(int row, int col) {
         int footprint = 3;
         if (BOARD[row][col] == EMPTY_SPACE)
             BOARD[row][col] = LOCATION;
@@ -60,30 +67,38 @@ public class BasicRatMaze {
             BOARD[row][col] = footprint;
     }
 
+
     public void printBoard() {
         for (int r = 0; r < DIM; r++)
             for (int c = 0; c < DIM; c++)
                 System.out.printf(" %s ", BOARD[r][c] + (c < DIM - 1 ? "" : "\n"));
     }
 
+
     public static int[][] getBoard() {
-        int[][] boardEmpty =
+        return BOARD;
+    }
+
+
+    public static int[][] getNewBoard() {
+        int[][] emptyBoard =
                 {{0, 0, 0, 0},
                 {0, 0, 0, 0},
                 {0, 0, 0, 0},
-                {0, 0, 0, 0}};
+                {0, 0, 0, -1}};
 
         int[][] board =
                 {{0, 0, 0, 0},
                 {0, 0, 1, 0},
                 {0, 0, 1, 1},
-                {1, 1, 0, 0}};
+                {1, 1, 0, -1}};
 
         return board;
     }
 
+
     public static void main(String[] args) {
-        int[][] board = getBoard();
+        int[][] board = getNewBoard();
         new BasicRatMaze(board).solve();
     }
-} 
+}
